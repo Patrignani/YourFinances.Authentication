@@ -1,0 +1,13 @@
+.vs/
+src/YourFinances.Authentication.Domain.Core/obj/
+src/YourFinances.Authentication.Infra.Data/bin/
+src/YourFinances.Authentication.Infra.Data/obj/
+src/YourFinances.Authentication.Domain.Core/bin/
+src/YourFinances.Authentication.Domain/bin/
+src/YourFinances.Authentication.Domain/obj/
+src/YourFinances.Authentication.Infra.CrossCutting/bin/
+src/YourFinances.Authentication.Infra.CrossCutting/obj/
+src/YourFinances.Authentication.Server/bin/
+src/YourFinances.Authentication.Server/obj/
+src/YourFinances.Authentication.Test/bin/
+src/YourFinances.Authentication.Test/obj/
