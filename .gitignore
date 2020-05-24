@@ -11,3 +11,5 @@ src/YourFinances.Authentication.Server/bin/
 src/YourFinances.Authentication.Server/obj/
 src/YourFinances.Authentication.Test/bin/
 src/YourFinances.Authentication.Test/obj/
+src/YourFinances.Authentication.Infra.DataBase/bin/
+src/YourFinances.Authentication.Infra.DataBase/obj/
