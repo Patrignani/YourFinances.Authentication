@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="4fe49ec0-fbe6-4e6c-9ea5-710207231f5d" ChangeDateTime="05/25/2020 19:14:22">
+    <Property Name="ElementName" Value="[dbo].[Client].[IX_Client_Client]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Client_ClientSecret_ClientId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aa6fd6e3-5ba4-4dca-aa14-a5586675de09" ChangeDateTime="05/25/2020 19:19:18">
+    <Property Name="ElementName" Value="[dbo].[User].[IX_User_Uniq_Identification]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_User_Uniq__AccountId_Identification]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e554fafb-1023-4a29-9d83-8ee48c1610da" ChangeDateTime="05/25/2020 20:26:00">
+    <Property Name="ElementName" Value="[dbo].[User].[IX_User_Login]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_User_Email_Password_Active]" />
+  </Operation>
+</Operations>

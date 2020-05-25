@@ -57,9 +57,20 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Procedure" />
+    <Folder Include="Procedure\User" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Account.sql" />
+    <Build Include="Tables\Client.sql" />
+    <Build Include="Tables\Session.sql" />
+    <Build Include="Procedure\User\BasicRegister.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="YourFinances.Authentication.Infra.DataBase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare.scmp" />
   </ItemGroup>
 </Project>
