@@ -59,6 +59,7 @@
     <Folder Include="Tables" />
     <Folder Include="Procedure" />
     <Folder Include="Procedure\User" />
+    <Folder Include="Procedure\Auth" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\User.sql" />
@@ -66,6 +67,8 @@
     <Build Include="Tables\Client.sql" />
     <Build Include="Tables\Session.sql" />
     <Build Include="Procedure\User\BasicRegister.sql" />
+    <Build Include="Procedure\Auth\sp_Auth_Client.sql" />
+    <Build Include="Procedure\Auth\sp_Auth_Password.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="YourFinances.Authentication.Infra.DataBase.refactorlog" />

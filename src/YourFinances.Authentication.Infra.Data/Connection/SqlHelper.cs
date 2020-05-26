@@ -10,28 +10,6 @@ namespace YourFinances.Authentication.Infra.Data.Connection
     internal class SqlHelper : ISqlHelper
     {
         private readonly string _connectionString;
-        private SqlConnection _con;
-        private bool _disposed = false;
-        private SafeHandle _safeHandle = new SafeFileHandle(IntPtr.Zero, true);
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
-            {
-                return;
-            }
-
-            if (disposing)
-            {
-                _con.Close();
-                _con.Dispose();
-                _safeHandle?.Dispose();
-            }
-
-            _disposed = true;
-        }
-
-        public void Dispose() => Dispose(true);
 
         public SqlHelper(string connection)
         {
@@ -40,18 +18,18 @@ namespace YourFinances.Authentication.Infra.Data.Connection
 
         public SqlConnection OpenConnetction()
         {
-            _con= new SqlConnection(_connectionString);
-            _con.Open();
+            var con = new SqlConnection(_connectionString);
+            con.Open();
 
-            return _con;
+            return con;
         }
 
         public async Task<SqlConnection> OpenConnetctionAsync()
         {
-            _con = new SqlConnection(_connectionString);
-           await  _con.OpenAsync();
+            var con  = new SqlConnection(_connectionString);
+            await con.OpenAsync();
 
-            return _con;
+            return con;
         }
     }
 }

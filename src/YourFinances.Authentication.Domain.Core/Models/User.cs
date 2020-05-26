@@ -1,12 +1,12 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using YourFinances.Authentication.Domain.Core.DTOs.Object;
 
 namespace YourFinances.Authentication.Domain.Core.Models
 {
     public class User
     {
-
         public User(DTOs.UserRegister register)
         {
             Identification = register.Identification;
@@ -63,9 +63,11 @@ namespace YourFinances.Authentication.Domain.Core.Models
             return result.ToString();
         }
 
-        public ValidateModel Valid()
+        public ValidateModel Valid(string password = "")
         {
+
             var validate = new ValidateModel();
+
 
             if (string.IsNullOrEmpty(Identification))
             {
@@ -76,13 +78,44 @@ namespace YourFinances.Authentication.Domain.Core.Models
             {
                 validate.NotValid("Email Obrigatória.");
             }
+            else
+            {
+                if (!IsValidEmail(Email))
+                {
+                    validate.NotValid("Email inválido.");
+                }
+            }
 
             if (string.IsNullOrEmpty(Password))
             {
                 validate.NotValid("Senha Obrigatória.");
             }
+            else if (!string.IsNullOrEmpty(password))
+            {
+
+                var regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+                Match match = regex.Match(password);
+
+                if (!match.Success)
+                {
+                    validate.NotValid("Senha deve ter no mínimo de oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
+                }
+            }
 
             return validate;
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // public virtual Account Account { get; set; }

@@ -5,6 +5,7 @@
     [RefreshToken] NCHAR(150) NOT NULL, 
     [ExpirationDate] DATETIME NOT NULL, 
     [CreateDate] DATETIME NOT NULL, 
+    [SessionId] INT NULL, 
     FOREIGN KEY (UserId) REFERENCES [User]([Id])
 )
 

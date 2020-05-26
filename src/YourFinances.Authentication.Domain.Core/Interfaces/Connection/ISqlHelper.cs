@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace YourFinances.Authentication.Domain.Core.Interfaces.Connection
 {
-    public interface ISqlHelper : IDisposable
+    public interface ISqlHelper
     {
         SqlConnection OpenConnetction();
         Task<SqlConnection> OpenConnetctionAsync();

@@ -23,7 +23,7 @@ namespace YourFinances.Authentication.Domain.Services
             try
             {
                 var user = new Core.Models.User(userRegister);
-                var valid = user.Valid();
+                var valid = user.Valid(userRegister.Password);
                 if (valid.Success)
                 {
                     await _userRepository.BasicRegisterAsync(user);

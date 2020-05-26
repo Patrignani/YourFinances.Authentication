@@ -19,7 +19,12 @@ namespace YourFinances.Authentication.Infra.Data.Repository
         { 
             using (var con = await _sql.OpenConnetctionAsync())
             {
-               user.SetId(await con.ExecuteScalarAsync<int>("sp_User_Basic_Register", user, commandType: System.Data.CommandType.StoredProcedure));
+               user.SetId(await con.ExecuteScalarAsync<int>("sp_User_Basic_Register", new 
+               {
+                   Password= user.Password, 
+                   Email=user.Email,
+                   Identification= user.Identification
+               }, commandType: System.Data.CommandType.StoredProcedure));
             }
         }
 
