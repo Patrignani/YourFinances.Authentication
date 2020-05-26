@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YourFinances.Authentication.Domain\YourFinances.Authentication.Domain.csproj" />
+    <ProjectReference Include="..\YourFinances.Authentication.Infra.Data\YourFinances.Authentication.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

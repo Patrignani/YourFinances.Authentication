@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using YourFinances.Authentication.Domain.Core.DTOs.Object;
 
 namespace YourFinances.Authentication.Domain.Core.Models
 {
@@ -47,11 +48,11 @@ namespace YourFinances.Authentication.Domain.Core.Models
                 SHA512 sha512 = SHA512Managed.Create();
                 byte[] bytes = Encoding.UTF8.GetBytes(value);
                 byte[] hash = sha512.ComputeHash(bytes);
-                _password= GetStringFromHash(hash);
+                _password = GetStringFromHash(hash);
             }
         }
 
-
+        public void SetId(int id) => Id = id;
         private static string GetStringFromHash(byte[] hash)
         {
             StringBuilder result = new StringBuilder();
@@ -60,6 +61,28 @@ namespace YourFinances.Authentication.Domain.Core.Models
                 result.Append(hash[i].ToString("X2"));
             }
             return result.ToString();
+        }
+
+        public ValidateModel Valid()
+        {
+            var validate = new ValidateModel();
+
+            if (string.IsNullOrEmpty(Identification))
+            {
+                validate.NotValid("Identificação Obrigatória.");
+            }
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                validate.NotValid("Email Obrigatória.");
+            }
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                validate.NotValid("Senha Obrigatória.");
+            }
+
+            return validate;
         }
 
         // public virtual Account Account { get; set; }

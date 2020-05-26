@@ -9,6 +9,7 @@ namespace YourFinances.Authentication.Domain.Core.DTOs
         public int Id { get;  set; }
         public string Identification { get;  set; }
         public bool Active { get;  set; }
+        public string Email { get; set; }
     }
 
     public class UserRegister

@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YourFinances.Authentication.Domain.Core\YourFinances.Authentication.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

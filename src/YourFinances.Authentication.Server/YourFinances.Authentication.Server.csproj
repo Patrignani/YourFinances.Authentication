@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YourFinances.Authentication.Infra.CrossCutting\YourFinances.Authentication.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 
