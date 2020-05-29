@@ -5,7 +5,9 @@
 	@Email varchar(200),
 	@ExpirationDate datetime
 AS
-BEGIN
+BEGIN TRAN 
+BEGIN TRY
+
 	Declare @UserAdd Table(Id INT, Identification VARCHAR(150), [AcceptTerm] BIT, 
 		[Email] VARCHAR(200), [AccountId] INT)
 
@@ -15,8 +17,8 @@ BEGIN
 	if @ClientIdentification IS NOT NULL
 	BEGIN
 
-		INSERT INTO @UserAdd SELECT Id, Identification, [AcceptTerm],[Email], [AccountId] FROM [USER] 
-			WHERE [Password] = @Password and Email = @Email and Active=1
+		INSERT INTO @UserAdd SELECT [Id], [Identification], [AcceptTerm],[Email], [AccountId] FROM [USER] 
+			WHERE [Password] = @Password AND Email = @Email AND Active=1
 
 		IF(SELECT COUNT(*) FROM @UserAdd) > 0
 		BEGIN
@@ -27,8 +29,11 @@ BEGIN
 
 			SELECT Id, Identification, Email, AcceptTerm, AccountId, @Refresh AS RefreshToken, @ClientIdentification AS ClientIdentification 
 				FROM @UserAdd
-		END
-		SELECT * FROM @UserAdd
+		ENDNÃO ESTÁ RETORNANDO O TOKEN
 	END
-	SELECT * FROM @UserAdd
-END
+COMMIT
+END TRY
+BEGIN CATCH
+	ROLLBACK
+END CATCH
+

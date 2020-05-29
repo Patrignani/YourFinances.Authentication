@@ -51,22 +51,23 @@ namespace YourFinances.Authentication.Domain.Services
             try
             {
                 var user = new User(oauthPassword.Username, oauthPassword.Password);
-                var password = await _auth.LoginPasswordAsync(oauthPassword.Client_id, oauthPassword.Client_secret, user);
-                result.Authorized = password != null && password.Id > 0;
+                var userClaims = await _auth.LoginPasswordAsync(oauthPassword.Client_id, oauthPassword.Client_secret, user);
+                result.Authorized = userClaims != null && userClaims.Id > 0;
 
                 if (result.Authorized)
                 {
                     result.ExpireTimeMinutes = _authConfiguration.ExpireTimeMinutes_Password;
                     result.Claims = new Claim[]
                     {
-                        new Claim("Client_Identification",password.ClientIdentification),
-                        new Claim("Id_User",password.Id.ToString()),
-                        new Claim("Email",password.Email),
-                        new Claim("User_Identification",password.Identification),
-                        new Claim("AcceptTerm", password.AcceptTerm ? "true": "false"),
-                        new Claim("AccountId",password.AccountId.ToString()),
+                        new Claim("Client_Identification",userClaims.ClientIdentification),
+                        new Claim("Id_User",userClaims.Id.ToString()),
+                        new Claim("Email",userClaims.Email),
+                        new Claim("User_Identification",userClaims.Identification),
+                        new Claim("AcceptTerm", userClaims.AcceptTerm ? "true": "false"),
+                        new Claim("AccountId",userClaims.AccountId.ToString()),
+                        new Claim("RefreshToken",userClaims.RefreshToken),
                     };
-                    result.RefreshToken = password.RefreshToken;
+                    result.RefreshToken = userClaims.RefreshToken;
                 }
             }
             catch (Exception e)
@@ -78,9 +79,37 @@ namespace YourFinances.Authentication.Domain.Services
             return result;
         }
 
-        public Task<AuthorizationRolesRefresh> RefreshTokenCredentialsAuthorizationAsync(OAuthRefreshToken refreshToken)
+        public async Task<AuthorizationRolesRefresh> RefreshTokenCredentialsAuthorizationAsync(OAuthRefreshToken refreshToken)
         {
-            throw new System.NotImplementedException();
+            var result = new AuthorizationRolesRefresh();
+            try
+            {
+                var userClaims = await _auth.LoginRefreshTokenAsync(refreshToken.Client_id, refreshToken.Client_secret, refreshToken.Refresh_token);
+                result.Authorized = userClaims != null && userClaims.Id > 0;
+
+                if (result.Authorized)
+                {
+                    result.ExpireTimeMinutes = _authConfiguration.ExpireTimeMinutes_Password;
+                    result.Claims = new Claim[]
+                    {
+                        new Claim("Client_Identification",userClaims.ClientIdentification),
+                        new Claim("Id_User",userClaims.Id.ToString()),
+                        new Claim("Email",userClaims.Email),
+                        new Claim("User_Identification",userClaims.Identification),
+                        new Claim("AcceptTerm", userClaims.AcceptTerm ? "true": "false"),
+                        new Claim("AccountId",userClaims.AccountId.ToString()),
+                        new Claim("RefreshToken",userClaims.RefreshToken),
+                    };
+                    result.RefreshToken = userClaims.RefreshToken;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Authorized = false;
+                result.Errors.Add(e.GetBaseException().Message);
+            }
+
+            return result;
         }
     }
 }

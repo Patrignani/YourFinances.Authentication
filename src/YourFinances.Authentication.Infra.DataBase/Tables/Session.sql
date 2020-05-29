@@ -6,6 +6,7 @@
     [ExpirationDate] DATETIME NOT NULL, 
     [CreateDate] DATETIME NOT NULL, 
     [SessionId] INT NULL, 
+    [Active] BIT NOT NULL, 
     FOREIGN KEY (UserId) REFERENCES [User]([Id])
 )
 

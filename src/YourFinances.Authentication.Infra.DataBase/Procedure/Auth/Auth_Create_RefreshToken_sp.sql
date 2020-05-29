@@ -10,12 +10,14 @@ BEGIN
 		([UserId]
 		,[RefreshToken]
 		,[ExpirationDate]
-		,[CreateDate])
+		,[CreateDate]
+		,[Active])
 	VALUES
 		(@UserId,
 		@Refresh,
 		@ExpirationDate,
-		GETUTCDATE())
+		GETUTCDATE(),
+		1)
 
-	SELECT @Refresh
+	RETURN @Refresh
 END

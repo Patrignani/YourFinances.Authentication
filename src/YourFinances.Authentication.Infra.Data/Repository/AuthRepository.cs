@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using YourFinances.Authentication.Domain.Core.DTOs;
 using YourFinances.Authentication.Domain.Core.Interfaces.Connection;
@@ -34,17 +35,41 @@ namespace YourFinances.Authentication.Infra.Data.Repository
             return client;
         }
 
-        public async Task<Password> LoginPasswordAsync(string clientId, string clientSecret,User user)
+        public async Task<UserClaims> LoginPasswordAsync(string clientId, string clientSecret,User user)
         {
-            Password password;
+            UserClaims password = null;
             using (var con = await _sql.OpenConnetctionAsync())
             {
-                password = await con.QueryFirstOrDefaultAsync<Password>("Auth_Password_sp", new
+                var aa = await con.QueryFirstAsync("Auth_Password_sp", new
                 {
                     ClientId = clientId,
                     ClientSecrete = clientSecret,
                     user.Password,
                     user.Email,
+                    ExpirationDate = DateTime.UtcNow.AddHours(_authConfiguration.RefreshToken_TimeValidHour)
+
+                }, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (aa is UserClaims)
+                    password = (UserClaims)aa;
+                else if(aa is string)
+                    throw new System.InvalidOperationException((string)aa);
+            }
+
+            return password;
+        }
+
+        public async Task<UserClaims> LoginRefreshTokenAsync(string clientId, string clientSecret, string refreshToken)
+        {
+
+            UserClaims password;
+            using (var con = await _sql.OpenConnetctionAsync())
+            {
+                password = await con.QueryFirstOrDefaultAsync<UserClaims>("Auth_RefreshToken_sp", new
+                {
+                    ClientId = clientId,
+                    ClientSecrete = clientSecret,
+                    RefreshToken = refreshToken,
                     ExpirationDate = DateTime.UtcNow.AddHours(_authConfiguration.RefreshToken_TimeValidHour)
 
                 }, commandType: System.Data.CommandType.StoredProcedure);

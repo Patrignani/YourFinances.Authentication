@@ -4,9 +4,9 @@ using System.Text;
 
 namespace YourFinances.Authentication.Domain.Core.Models
 {
-    public class Password
+    public class UserClaims
     {
-        protected Password()
+        protected UserClaims()
         { 
 
         }
