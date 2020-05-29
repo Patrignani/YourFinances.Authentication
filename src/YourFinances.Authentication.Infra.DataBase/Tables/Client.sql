@@ -1,9 +1,10 @@
 ﻿CREATE TABLE [dbo].[Client]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [ClientSecret] NCHAR(150) NOT NULL, 
-    [ClientId] NCHAR(150) NOT NULL, 
-    [Active] BIT NOT NULL DEFAULT 0
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+    [ClientSecret] VARCHAR(150) NOT NULL, 
+    [ClientId] VARCHAR(150) NOT NULL, 
+    [Active] BIT NOT NULL DEFAULT 0, 
+    [Identification] VARCHAR(150) NOT NULL
 )
 
 GO

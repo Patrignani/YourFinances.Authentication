@@ -21,9 +21,9 @@ namespace YourFinances.Authentication.Infra.Data.Repository
             {
                user.SetId(await con.ExecuteScalarAsync<int>("sp_User_Basic_Register", new 
                {
-                   Password= user.Password, 
-                   Email=user.Email,
-                   Identification= user.Identification
+                   user.Password, 
+                   user.Email,
+                   user.Identification
                }, commandType: System.Data.CommandType.StoredProcedure));
             }
         }

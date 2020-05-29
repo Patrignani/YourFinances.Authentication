@@ -33,6 +33,13 @@ namespace YourFinances.Authentication.Domain.Core.Models
             Password = password;
         }
 
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
+
+
         private string _password;
         public int Id { get; private set; }
         public string Identification { get; private set; }
@@ -45,8 +52,8 @@ namespace YourFinances.Authentication.Domain.Core.Models
             get { return _password; }
             private set
             {
-                SHA512 sha512 = SHA512Managed.Create();
-                byte[] bytes = Encoding.UTF8.GetBytes(value);
+                SHA512 sha512 = SHA512.Create();
+                byte[] bytes = Encoding.UTF8.GetBytes(value[value.Length -1] +value + value[0]);
                 byte[] hash = sha512.ComputeHash(bytes);
                 _password = GetStringFromHash(hash);
             }

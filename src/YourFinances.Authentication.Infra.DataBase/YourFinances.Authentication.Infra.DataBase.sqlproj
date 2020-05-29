@@ -60,6 +60,7 @@
     <Folder Include="Procedure" />
     <Folder Include="Procedure\User" />
     <Folder Include="Procedure\Auth" />
+    <Folder Include="Script" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\User.sql" />
@@ -67,13 +68,16 @@
     <Build Include="Tables\Client.sql" />
     <Build Include="Tables\Session.sql" />
     <Build Include="Procedure\User\BasicRegister.sql" />
-    <Build Include="Procedure\Auth\sp_Auth_Client.sql" />
-    <Build Include="Procedure\Auth\sp_Auth_Password.sql" />
+    <Build Include="Procedure\Auth\Auth_Client_sp.sql" />
+    <Build Include="Procedure\Auth\Auth_Password_sp.sql" />
+    <Build Include="Procedure\Auth\Auth_RefreshToken_sp.sql" />
+    <Build Include="Procedure\Auth\Auth_Create_RefreshToken_sp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="YourFinances.Authentication.Infra.DataBase.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
+    <None Include="Script\Init.sql" />
   </ItemGroup>
 </Project>

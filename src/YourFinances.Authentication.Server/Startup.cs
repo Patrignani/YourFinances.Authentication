@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SimpleOAuth;
 using YourFinances.Authentication.Infra.CrossCutting;
+using YourFinances.Authentication.Server.Middleware.Base;
 
 namespace YourFinances.Authentication.Server
 {
@@ -26,7 +28,7 @@ namespace YourFinances.Authentication.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Register(Configuration);
+            services.ConfigureApllicationServices(Configuration);
             services.AddControllers();
         }
 
@@ -38,7 +40,7 @@ namespace YourFinances.Authentication.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.ConfigureApllication();
 
             app.UseRouting();
 
@@ -46,6 +48,7 @@ namespace YourFinances.Authentication.Server
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.AddAuth(app);
                 endpoints.MapControllers();
             });
         }

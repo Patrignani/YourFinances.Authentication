@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleOAuth.Interfaces;
 using YourFinances.Authentication.Domain.Core.Interfaces.Repository;
 using YourFinances.Authentication.Domain.Core.Interfaces.Services;
 using YourFinances.Authentication.Domain.Services;
@@ -16,9 +17,11 @@ namespace YourFinances.Authentication.Infra.CrossCutting
 
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
             //Service
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthorizationRoles, AuthorizationRoles>();
 
             return services;
         }
