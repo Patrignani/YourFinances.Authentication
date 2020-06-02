@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿using Dapper;
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
@@ -31,5 +32,17 @@ namespace YourFinances.Authentication.Infra.Data.Connection
 
             return con;
         }
+
+        //public async Task<T> ReadProcAsync<T>(string proc, object param)
+        //{
+        //    using (var con = await OpenConnetctionAsync())
+        //    {
+        //        using (var multi = await con.QueryMultipleAsync(proc, param, commandType: System.Data.CommandType.StoredProcedure))
+        //        {
+        //            var data1 = (await multi.ReadFirstOrDefaultAsync());
+        //            var data2 = (await multi.ReadFirstOrDefaultAsync());
+        //        }
+        //    }
+        //}
     }
 }

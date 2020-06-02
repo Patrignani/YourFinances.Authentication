@@ -1,10 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[Auth_Create_RefreshToken_sp]
 	@UserId int,
-	@ExpirationDate datetime
+	@ExpirationDate datetime,
+	@Refresh varchar(50)
 AS
 BEGIN
-	DECLARE @Refresh varchar(50) = NEWID()
-
+	
 	INSERT INTO 
 		[dbo].[Sessions]
 		([UserId]
@@ -19,5 +19,4 @@ BEGIN
 		GETUTCDATE(),
 		1)
 
-	RETURN @Refresh
 END

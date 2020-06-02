@@ -7,6 +7,9 @@
     [Email] VARCHAR(200) NOT NULL, 
     [AccountId] INT NULL, 
     [Password] VARCHAR(250) NOT NULL, 
+    [KeepConnected] BIT NOT NULL DEFAULT 0, 
+    [EditionUserId] INT NULL, 
+    [DateEdition] DATETIME NOT NULL, 
     FOREIGN KEY ([AccountId]) REFERENCES Account(Id) 
 )
 

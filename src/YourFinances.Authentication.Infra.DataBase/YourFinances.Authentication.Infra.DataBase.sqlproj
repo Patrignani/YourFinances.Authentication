@@ -61,6 +61,7 @@
     <Folder Include="Procedure\User" />
     <Folder Include="Procedure\Auth" />
     <Folder Include="Script" />
+    <Folder Include="Procedure\Account" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\User.sql" />
@@ -72,6 +73,7 @@
     <Build Include="Procedure\Auth\Auth_Password_sp.sql" />
     <Build Include="Procedure\Auth\Auth_RefreshToken_sp.sql" />
     <Build Include="Procedure\Auth\Auth_Create_RefreshToken_sp.sql" />
+    <Build Include="Procedure\Account\Account_Create_sp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="YourFinances.Authentication.Infra.DataBase.refactorlog" />

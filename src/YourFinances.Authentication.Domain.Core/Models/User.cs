@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using YourFinances.Authentication.Domain.Core.DTOs.Object;
@@ -7,13 +8,15 @@ namespace YourFinances.Authentication.Domain.Core.Models
 {
     public class User
     {
-        public User(DTOs.UserRegister register)
+        public User(DTOs.UserRegisterInternal register)
         {
             Identification = register.Identification;
             Email = register.Email;
             Password = register.Password;
             AcceptTerm = false;
             Active = false;
+            EditionUserId = register.UserId;
+            AccountId = register.AccountId;
         }
 
         public User(DTOs.UserLogin login)
@@ -39,6 +42,9 @@ namespace YourFinances.Authentication.Domain.Core.Models
             Password = password;
         }
 
+        protected User()
+        {
+        }
 
         private string _password;
         public int Id { get; private set; }
@@ -47,13 +53,16 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public bool AcceptTerm { get; private set; }
         public int? AccountId { get; private set; }
         public string Email { get; private set; }
+        public DateTime DateEdition { get; private set; }
+        public int? EditionUserId { get; private set; }
+
         public string Password
         {
             get { return _password; }
             private set
             {
                 SHA512 sha512 = SHA512.Create();
-                byte[] bytes = Encoding.UTF8.GetBytes(value[value.Length -1] +value + value[0]);
+                byte[] bytes = Encoding.UTF8.GetBytes(value[value.Length - 1] + value + value[0]);
                 byte[] hash = sha512.ComputeHash(bytes);
                 _password = GetStringFromHash(hash);
             }

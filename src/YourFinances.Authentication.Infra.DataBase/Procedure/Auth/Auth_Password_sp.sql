@@ -9,7 +9,7 @@ BEGIN TRAN
 BEGIN TRY
 
 	Declare @UserAdd Table(Id INT, Identification VARCHAR(150), [AcceptTerm] BIT, 
-		[Email] VARCHAR(200), [AccountId] INT)
+		[Email] VARCHAR(200), [AccountId] INT, [KeepConnected] BIT)
 
 	Declare @ClientIdentification  varchar(150) = (SELECT TOP 1 Identification 
 		FROM [Client] WHERE ClientId =@ClientId AND ClientSecret=@ClientSecrete and Active =1)
@@ -17,23 +17,31 @@ BEGIN TRY
 	if @ClientIdentification IS NOT NULL
 	BEGIN
 
-		INSERT INTO @UserAdd SELECT [Id], [Identification], [AcceptTerm],[Email], [AccountId] FROM [USER] 
+		INSERT INTO @UserAdd SELECT [Id], [Identification], [AcceptTerm],[Email], [AccountId], [KeepConnected] FROM [USER] 
 			WHERE [Password] = @Password AND Email = @Email AND Active=1
 
 		IF(SELECT COUNT(*) FROM @UserAdd) > 0
 		BEGIN
-			DECLARE @Refresh varchar(50) 
 			DECLARE @UserId int = (SELECT TOP 1 Id FROM @UserAdd)
-			
-			EXEC @Refresh = Auth_Create_RefreshToken_sp @UserId, @ExpirationDate
+			DECLARE @Refresh varchar(50) = ''
 
-			SELECT Id, Identification, Email, AcceptTerm, AccountId, @Refresh AS RefreshToken, @ClientIdentification AS ClientIdentification 
+			IF(SELECT TOP 1 [KeepConnected] FROM @UserAdd) = 0
+			BEGIN
+				SET @Refresh = NEWID()
+				EXEC  Auth_Create_RefreshToken_sp @UserId, @ExpirationDate, @Refresh
+			END
+
+			SELECT Id, Identification, Email, AcceptTerm, AccountId, [KeepConnected], @Refresh AS RefreshToken, @ClientIdentification AS ClientIdentification 
 				FROM @UserAdd
-		ENDNÃO ESTÁ RETORNANDO O TOKEN
+
+		END
 	END
 COMMIT
 END TRY
 BEGIN CATCH
+ SELECT   
+        ERROR_NUMBER() AS ErrorNumber  
+       ,ERROR_MESSAGE() AS ErrorMessage;  
 	ROLLBACK
 END CATCH
 

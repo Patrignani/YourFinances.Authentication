@@ -18,10 +18,12 @@ namespace YourFinances.Authentication.Infra.CrossCutting
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
 
             //Service
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthorizationRoles, AuthorizationRoles>();
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

@@ -40,7 +40,8 @@ namespace YourFinances.Authentication.Infra.Data.Repository
             UserClaims password = null;
             using (var con = await _sql.OpenConnetctionAsync())
             {
-                var aa = await con.QueryFirstAsync("Auth_Password_sp", new
+
+                password = await con.QueryFirstOrDefaultAsync<UserClaims>("Auth_Password_sp", new
                 {
                     ClientId = clientId,
                     ClientSecrete = clientSecret,
@@ -49,11 +50,6 @@ namespace YourFinances.Authentication.Infra.Data.Repository
                     ExpirationDate = DateTime.UtcNow.AddHours(_authConfiguration.RefreshToken_TimeValidHour)
 
                 }, commandType: System.Data.CommandType.StoredProcedure);
-
-                if (aa is UserClaims)
-                    password = (UserClaims)aa;
-                else if(aa is string)
-                    throw new System.InvalidOperationException((string)aa);
             }
 
             return password;

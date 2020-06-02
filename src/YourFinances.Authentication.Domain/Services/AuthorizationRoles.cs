@@ -56,7 +56,11 @@ namespace YourFinances.Authentication.Domain.Services
 
                 if (result.Authorized)
                 {
-                    result.ExpireTimeMinutes = _authConfiguration.ExpireTimeMinutes_Password;
+                    if (userClaims.KeepConnected)
+                        result.ExpireTimeMinutes = 360 *24*60;
+                    else
+                        result.ExpireTimeMinutes = _authConfiguration.ExpireTimeMinutes_Password;
+
                     result.Claims = new Claim[]
                     {
                         new Claim("Client_Identification",userClaims.ClientIdentification),

@@ -18,6 +18,7 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public int AccountId { get; private set; }
         public string RefreshToken { get; private set; }
         public string ClientIdentification { get; private set; }
+        public bool KeepConnected { get; private set; }
 
     }
 }

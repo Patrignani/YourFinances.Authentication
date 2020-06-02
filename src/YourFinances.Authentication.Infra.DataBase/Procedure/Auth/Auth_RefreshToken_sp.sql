@@ -14,20 +14,21 @@ BEGIN
 	if @ClientIdentification IS NOT NULL
 		BEGIN
 			DECLARE @SessionId INT = (SELECT TOP 1 Id FROM [Sessions] WHERE [RefreshToken] = @RefreshToken
-			AND [ExpirationDate] < GETUTCDATE() AND [Active] = 1)
+			AND [ExpirationDate] > GETUTCDATE() AND [Active] = 1)
 			
-			DECLARE  @UserId INT = (SELECT TOP 1 UserId FROM [Sessions] WHERE [SessionId] = @SessionId) 
+			DECLARE  @UserId INT = (SELECT TOP 1 UserId FROM [Sessions] WHERE [Id] = @SessionId) 
 
 			if  @SessionId IS NOT NULL
 				BEGIN
 					INSERT INTO @UserAdd SELECT [Id], [Identification], [AcceptTerm],[Email], [AccountId] FROM [USER] 
 					WHERE [Id] = @UserId
 
-					DECLARE @Refresh varchar(50) 
+					DECLARE @Refresh varchar(50) = NEWID()
 		
-					EXEC @Refresh = Auth_Create_RefreshToken_sp @UserId, @ExpirationDate
+					EXEC Auth_Create_RefreshToken_sp @UserId, @ExpirationDate, @Refresh
 
-					UPDATE [Sessions] SET SessionId=@SessionId, [Active]=0 WHERE [RefreshToken] = @RefreshToken 
+					UPDATE [Sessions] SET SessionId=@SessionId WHERE [RefreshToken] = @Refresh 
+					UPDATE [Sessions] SET [Active]=0 WHERE [Id] = @SessionId
 	
 					SELECT Id, Identification, Email, AcceptTerm, AccountId, @Refresh AS RefreshToken, @ClientIdentification AS ClientIdentification 
 					FROM @UserAdd
