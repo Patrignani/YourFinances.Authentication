@@ -68,7 +68,7 @@ namespace YourFinances.Authentication.Domain.Services
                         new Claim("Email",userClaims.Email),
                         new Claim("User_Identification",userClaims.Identification),
                         new Claim("AcceptTerm", userClaims.AcceptTerm ? "true": "false"),
-                        new Claim("AccountId",userClaims.AccountId.ToString()),
+                        new Claim("Account_Id",userClaims.AccountId.ToString()),
                         new Claim("RefreshToken",userClaims.RefreshToken),
                     };
                     result.RefreshToken = userClaims.RefreshToken;
@@ -101,7 +101,7 @@ namespace YourFinances.Authentication.Domain.Services
                         new Claim("Email",userClaims.Email),
                         new Claim("User_Identification",userClaims.Identification),
                         new Claim("AcceptTerm", userClaims.AcceptTerm ? "true": "false"),
-                        new Claim("AccountId",userClaims.AccountId.ToString()),
+                        new Claim("Account_Id",userClaims.AccountId.ToString()),
                         new Claim("RefreshToken",userClaims.RefreshToken),
                     };
                     result.RefreshToken = userClaims.RefreshToken;

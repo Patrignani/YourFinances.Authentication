@@ -18,8 +18,14 @@
     public class UserRegisterInternal : UserRegister
     {
 
+        public int? AccountId { get; set; }
+        public int? UserId { get; set; }
+    }
+
+    public class SessionUser
+    { 
+        public int Id { get; set; }
         public int AccountId { get; set; }
-        public int UserId { get; set; }
     }
 
     public class UserLogin

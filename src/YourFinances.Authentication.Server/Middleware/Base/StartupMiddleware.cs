@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleOAuth;
+using SimpleOAuth.Models;
 using YourFinances.Authentication.Domain.Core.DTOs;
 using YourFinances.Authentication.Infra.CrossCutting;
 
@@ -23,6 +24,24 @@ namespace YourFinances.Authentication.Server.Middleware.Base
 
 
             services
+                 .AddScoped(serviceProvider => {
+                     var token = serviceProvider.GetRequiredService<TokenRead>();
+                     var value = new SessionUser();
+
+                     if (token != null && token.Claims != null)
+                     {
+                         var user_Id = token.GetValue("Id_User");
+                         var account_Id = token.GetValue("Account_Id");
+
+                         if (int.TryParse(user_Id, out int userId) && int.TryParse(account_Id, out int accountId))
+                         {
+                             value.Id = userId;
+                             value.AccountId = accountId;
+                         }
+                     }
+
+                     return value;
+                 })
                 .Register(configuration)
                 .AddCorsServices(configuration)
                 .AddResponseCompression()

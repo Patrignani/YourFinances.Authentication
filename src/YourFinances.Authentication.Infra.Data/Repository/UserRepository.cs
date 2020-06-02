@@ -23,7 +23,9 @@ namespace YourFinances.Authentication.Infra.Data.Repository
                 {
                     user.Password,
                     user.Email,
-                    user.Identification
+                    user.Identification,
+                    user.UserEditionId,
+                    user.AccountId
                 }, commandType: System.Data.CommandType.StoredProcedure));
             }
         }

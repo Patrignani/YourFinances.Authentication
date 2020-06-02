@@ -9,5 +9,6 @@ namespace YourFinances.Authentication.Domain.Core.Interfaces.Services
         Task<ResultModel<UserBasic>> BasicRegisterAsync(UserRegister userRegister);
         Task<ValidateModel> KeepConnectedAsync(bool keepConnected);
         Task<ValidateModel> AccepTermAsync();
+        Task<ResultModel<UserBasic>> InternalRegisterAsync(UserRegister userRegister);
     }
 }

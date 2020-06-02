@@ -15,7 +15,7 @@ namespace YourFinances.Authentication.Domain.Core.Models
             Password = register.Password;
             AcceptTerm = false;
             Active = false;
-            EditionUserId = register.UserId;
+            UserEditionId = register.UserId;
             AccountId = register.AccountId;
         }
 
@@ -54,7 +54,7 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public int? AccountId { get; private set; }
         public string Email { get; private set; }
         public DateTime DateEdition { get; private set; }
-        public int? EditionUserId { get; private set; }
+        public int? UserEditionId { get; private set; }
 
         public string Password
         {

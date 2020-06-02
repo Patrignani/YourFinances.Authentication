@@ -27,18 +27,13 @@ namespace YourFinances.Authentication.Server.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody]UserRegister value)
         {
-            return Ok(await _userService.BasicRegisterAsync(new UserRegisterInternal
-            {
-                Email = value.Email,
-                Identification = value.Identification,
-                Password = value.Password
-            }));
+            return Ok(await _userService.BasicRegisterAsync(value));
         }
 
         [HttpPost("RegisterInternal")]
-        public async Task<IActionResult> RegisterInternal([FromBody]UserRegisterInternal value)
+        public async Task<IActionResult> RegisterInternal([FromBody]UserRegister value)
         {
-            return Ok(await _userService.BasicRegisterAsync(value));
+            return Ok(await _userService.InternalRegisterAsync(value));
         }
 
         [HttpPut("KeepConnected")]
