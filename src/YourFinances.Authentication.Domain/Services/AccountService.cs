@@ -34,12 +34,21 @@ namespace YourFinances.Authentication.Domain.Services
                     if (valid.Success)
                     {
                         await _account.RegisterAccount(account, userId);
-                        result.SetData(new AccountBasic
+                        if (account.Id > 0)
                         {
-                            Active = account.Active,
-                            Id = account.Id,
-                            Identification = account.Identification
-                        });
+
+                            result.SetData(new AccountBasic
+                            {
+                                Active = account.Active,
+                                Id = account.Id,
+                                Identification = account.Identification
+                            });
+                        }
+                        else
+                        {
+                            result.NotValid();
+                            result.SetMessages("Não foi possíovel realizar o cadastro!");
+                        }
                     }
                     else
                     {

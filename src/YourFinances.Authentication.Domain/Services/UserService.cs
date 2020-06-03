@@ -101,13 +101,22 @@ namespace YourFinances.Authentication.Domain.Services
                 if (valid.Success)
                 {
                     await _userRepository.BasicRegisterAsync(user);
-                    result.SetData(new UserBasic
+
+                    if (user.Id > 0)
                     {
-                        Active = user.Active,
-                        Id = user.Id,
-                        Email = user.Email,
-                        Identification = user.Identification
-                    });
+                        result.SetData(new UserBasic
+                        {
+                            Active = user.Active,
+                            Id = user.Id,
+                            Email = user.Email,
+                            Identification = user.Identification
+                        });
+                    }
+                    else
+                    {
+                        result.NotValid();
+                        result.SetMessages("Não foi possível realizar o cadastro!");
+                    }
                 }
                 else
                 {

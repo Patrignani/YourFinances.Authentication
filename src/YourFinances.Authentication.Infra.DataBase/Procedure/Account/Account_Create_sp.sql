@@ -4,9 +4,9 @@
 	@UserId int
 AS
 BEGIN	
-	IF(SELECT COUNT(*) FROM [USER] WHERE [Id] = @UserId AND  [AccountId] IS NULL) = 0
+	IF(SELECT COUNT(*) FROM [USER] WHERE [Id] = @UserId AND  [AccountId] IS NULL) > 0
 	BEGIN
-		INSERT [ACCOUNT]([Identification], [Active]) VALUES (@Identification,@Active)
+		INSERT [ACCOUNT]([Identification], [EditionUserId], [DateEdition],[Active]) VALUES (@Identification, @UserId, GETUTCDATE(),@Active)
 		DECLARE @AccountId  int = CAST(SCOPE_IDENTITY() as int)
 
 		UPDATE [USER] SET [AccountId] = @AccountId WHERE [Id] = @UserId

@@ -19,7 +19,7 @@ namespace YourFinances.Authentication.Infra.Data.Repository
         {
             using (var con = await _sql.OpenConnetctionAsync())
             {
-                account.SetId(await con.ExecuteScalarAsync<int>("User_Basic_Register_sp", new
+                account.SetId(await con.ExecuteScalarAsync<int>("Account_Create_sp", new
                 {
                     account.Identification,
                     account.Active,
