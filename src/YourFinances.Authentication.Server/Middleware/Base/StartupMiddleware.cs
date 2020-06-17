@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ModularSystem.Messaging.RabbitMQ;
+using ModularSystem.Messaging.RabbitMQ.ServiceHost;
 using SimpleOAuth;
 using SimpleOAuth.Models;
 using YourFinances.Authentication.Domain.Core.DTOs;
@@ -22,8 +25,11 @@ namespace YourFinances.Authentication.Server.Middleware.Base
                 RefreshToken_TimeValidHour = configuration.GetValue<int>("AuthConfiguration:RefreshToken_TimeValidHour"),
             };
 
-
             services
+                .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
+                .AddRabbitMQ(configuration, options => {
+                    options.AddConnection("rabbitmq");
+                })
                  .AddScoped(serviceProvider => {
                      var token = serviceProvider.GetRequiredService<TokenRead>();
                      var value = new SessionUser();
@@ -57,6 +63,7 @@ namespace YourFinances.Authentication.Server.Middleware.Base
 
         public static IApplicationBuilder ConfigureApllication(this IApplicationBuilder app)
         {
+            app.UseRabbitMq();
             app.AddCorsApllication()
                .UseResponseCompression()
                .UseSimpleOAuth();
