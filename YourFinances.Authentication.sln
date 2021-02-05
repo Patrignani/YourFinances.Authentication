@@ -23,11 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourFinances.Authentication
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourFinances.Authentication.Infra.CrossCutting", "src\YourFinances.Authentication.Infra.CrossCutting\YourFinances.Authentication.Infra.CrossCutting.csproj", "{1F44C1A2-4F53-41CF-B4DB-7493B88BA574}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourFinances.Authentication.Infra.Data", "src\YourFinances.Authentication.Infra.Data\YourFinances.Authentication.Infra.Data.csproj", "{9AED495A-F03D-4F04-8BA1-DAC7F25FFA51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourFinances.Authentication.Infra.Data2", "src\YourFinances.Authentication.Infra.Data2\YourFinances.Authentication.Infra.Data2.csproj", "{9AED495A-F03D-4F04-8BA1-DAC7F25FFA51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourFinances.Authentication.Test", "src\YourFinances.Authentication.Test\YourFinances.Authentication.Test.csproj", "{C17BCF85-0C0A-4FE5-858D-011EDEAA3EA9}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "YourFinances.Authentication.Infra.DataBase", "src\YourFinances.Authentication.Infra.DataBase\YourFinances.Authentication.Infra.DataBase.sqlproj", "{28226732-73CD-4662-835E-5C4BB9F6F1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourFinances.Authentication.Infra.Data", "src\YourFinances.Authentication.Infra.Data\YourFinances.Authentication.Infra.Data.csproj", "{70CADB8C-0235-4220-B8ED-E6E6A82603B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{28226732-73CD-4662-835E-5C4BB9F6F1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28226732-73CD-4662-835E-5C4BB9F6F1B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28226732-73CD-4662-835E-5C4BB9F6F1B6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{70CADB8C-0235-4220-B8ED-E6E6A82603B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70CADB8C-0235-4220-B8ED-E6E6A82603B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70CADB8C-0235-4220-B8ED-E6E6A82603B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70CADB8C-0235-4220-B8ED-E6E6A82603B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{9AED495A-F03D-4F04-8BA1-DAC7F25FFA51} = {C1E8D075-6D32-4EBE-8757-49988739DBFB}
 		{C17BCF85-0C0A-4FE5-858D-011EDEAA3EA9} = {CFD4465E-35EF-46BF-BB34-9BCA1EEB7DE8}
 		{28226732-73CD-4662-835E-5C4BB9F6F1B6} = {C1E8D075-6D32-4EBE-8757-49988739DBFB}
+		{70CADB8C-0235-4220-B8ED-E6E6A82603B8} = {C1E8D075-6D32-4EBE-8757-49988739DBFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C09E9BA7-0701-4202-9BB4-40A8B3F9A62A}

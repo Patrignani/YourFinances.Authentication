@@ -1,0 +1,11 @@
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\bin\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.deps.json
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\bin\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.dll
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\bin\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.pdb
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\bin\Release\netcoreapp3.1\YourFinances.Authentication.Domain.Core.dll
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\bin\Release\netcoreapp3.1\YourFinances.Authentication.Domain.Core.pdb
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.csprojAssemblyReference.cache
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.AssemblyInfoInputs.cache
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.AssemblyInfo.cs
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.csproj.CopyComplete
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.dll
+C:\Projects\YourFinances.Authentication\src\YourFinances.Authentication.Infra.Data\obj\Release\netcoreapp3.1\YourFinances.Authentication.Infra.Data.pdb

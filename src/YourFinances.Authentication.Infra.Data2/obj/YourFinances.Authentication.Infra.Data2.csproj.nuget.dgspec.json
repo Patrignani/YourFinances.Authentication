@@ -1,0 +1,164 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Infra.Data2\\YourFinances.Authentication.Infra.Data2.csproj": {}
+  },
+  "projects": {
+    "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\YourFinances.Authentication.Domain.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\YourFinances.Authentication.Domain.Core.csproj",
+        "projectName": "YourFinances.Authentication.Domain.Core",
+        "projectPath": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\YourFinances.Authentication.Domain.Core.csproj",
+        "packagesPath": "C:\\Users\\Patrignani\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Patrignani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "ModularSystem.Messaging.RabbitMQ": {
+              "target": "Package",
+              "version": "[1.1.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "SimpleOAuth": {
+              "target": "Package",
+              "version": "[0.0.9-beta, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Infra.Data2\\YourFinances.Authentication.Infra.Data2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Infra.Data2\\YourFinances.Authentication.Infra.Data2.csproj",
+        "projectName": "YourFinances.Authentication.Infra.Data2",
+        "projectPath": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Infra.Data2\\YourFinances.Authentication.Infra.Data2.csproj",
+        "packagesPath": "C:\\Users\\Patrignani\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Infra.Data2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Patrignani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\YourFinances.Authentication.Domain.Core.csproj": {
+                "projectPath": "C:\\Projects\\YourFinances.Authentication\\src\\YourFinances.Authentication.Domain.Core\\YourFinances.Authentication.Domain.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

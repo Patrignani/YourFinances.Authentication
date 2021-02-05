@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace YourFinances.Authentication.Domain.Core.Models
+﻿namespace YourFinances.Authentication.Domain.Core.Models
 {
     public class Client
     {
@@ -25,6 +21,8 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public string ClientSecret { get; private set; }
         public string ClientId { get; private set; }
         public bool Active { get; private set; }
-        
+        public User UserEdition { get; private set; }
+        public int UserEditionId { get; private set; }
+
     }
 }

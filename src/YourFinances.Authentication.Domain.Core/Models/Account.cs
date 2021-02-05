@@ -26,6 +26,7 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public string Identification { get; private set; }
         public bool Active { get; private set; }
         public DateTime DateEdition { get; private set; }
+        public User UserEdition { get; private set; }
         public int UserEditionId { get; private set; }
 
         public void SetId(int id) => Id = id;

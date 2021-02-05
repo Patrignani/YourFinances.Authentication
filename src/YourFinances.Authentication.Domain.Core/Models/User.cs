@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -55,6 +57,7 @@ namespace YourFinances.Authentication.Domain.Core.Models
         public string Email { get; private set; }
         public DateTime DateEdition { get; private set; }
         public int? UserEditionId { get; private set; }
+        public bool KeepConnected { get; private set; }
 
         public string Password
         {
@@ -67,6 +70,8 @@ namespace YourFinances.Authentication.Domain.Core.Models
                 _password = GetStringFromHash(hash);
             }
         }
+
+        public ICollection<Account> Accounts { get; private set; }
 
         public void SetId(int id) => Id = id;
         private static string GetStringFromHash(byte[] hash)
